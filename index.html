@@ -14,27 +14,42 @@
       height: 100vh;
       font-size: 24px;
       text-align: center;
+      flex-direction: column;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #666;
     }
   </style>
 </head>
 <body>
   <div>Uploading AOS 3 Beta Mod Leak...<br>🔒 Encrypted Archive</div>
-  <audio id="prankAudio" autoplay>
+  <button id="nextBtn">Натисни для продовження</button>
+  
+  <audio id="prankAudio" style="display:none;">
     <source src="moan.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
+    const nextBtn = document.getElementById("nextBtn");
     const audio = document.getElementById("prankAudio");
-    window.addEventListener('click', () => {
-      audio.play();
-    });
 
-    window.onload = () => {
-      audio.play().catch(() => {
-        console.log("Autoplay was blocked. Click anywhere to play.");
-      });
-    };
+    nextBtn.addEventListener('click', () => {
+      audio.play();
+      nextBtn.style.display = 'none';  // Сховати кнопку після натискання
+      document.body.innerHTML += "<div style='color: red; font-size: 28px;'>Сюрприз!</div>"; // Додає текст на сторінку після натискання
+    });
   </script>
 </body>
 </html>
